@@ -16,8 +16,8 @@ export TW_SITE_PASS=`openssl rand -base64 "$((40 * 2))" | tr '\n' ' ' | sed 's/[
 export TW_LOCAL_PASS=`openssl rand -base64 "$((40 * 2))" | tr '\n' ' ' | sed 's/[^a-zA-Z0-9]//g'` 
 sed -i "s/^TW_SITE_PASS=\"\"/TW_SITE_PASS=\"${TW_SITE_PASS}\"/g" install/install.sh
 sed -i "s/^TW_LOCAL_PASS=\"\"/TW_LOCAL_PASS=\"${TW_LOCAL_PASS}\"/g" install/install.sh
-$(cd install; patch -p0 < ../../patches/tty-fix.patch)
+(cd install; patch -p0 < ../../patches/tty-fix.patch)
 ./configure --prefix=${BOSH_INSTALL_TARGET}
-make
+make -j8
 make install
 
