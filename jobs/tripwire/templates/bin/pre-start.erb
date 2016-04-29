@@ -11,8 +11,8 @@ TW_LOCATIONS="-L ${LOCAL_KEY_PATH} -S ${SITE_KEY_PATH}"
 if [[ ! -f $LOCAL_KEY_PATH || ! -f $SITE_KEY_PATH ]]; then
   mkdir -p $KEY_DIR
   $PACKAGE_DIR/sbin/twadmin -m G ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> -Q <%= p('tripwire.sitepass') %>
-    
-  $PACKAGE_DIR/sbin/twadmin --create-cfgfile -S ${SITE_KEY_PATH} $PACKAGE_DIR/etc/twcfg.txt
-  $PACKAGE_DIR/sbin/twadmin --create-polfile -S ${SITE_KEY_PATH} $PACKAGE_DIR/etc/twpol.txt
+
+  $PACKAGE_DIR/sbin/twadmin --create-cfgfile -S ${SITE_KEY_PATH} -Q <%= p('tripwire.sitepass') %> $JOB_DIR/config/twcfg.txt
+  $PACKAGE_DIR/sbin/twadmin --create-polfile -S ${SITE_KEY_PATH} -Q <%= p('tripwire.sitepass') %> $JOB_DIR/config/twpol.txt
   $PACKAGE_DIR/sbin/tripwire -m i ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %>
 fi
