@@ -1,0 +1,12 @@
+#!/bin/bash
+JOB_NAME=tripwire
+JOB_DIR=/var/vcap/jobs/$JOB_NAME
+PACKAGE_DIR=/var/vcap/packages/tripwire
+KEY_DIR=$JOB_DIR/keys
+LOCAL_KEY_PATH=${KEY_DIR}/local.key
+SITE_KEY_PATH=${KEY_DIR}/site.key
+TW_LOCATIONS="-L ${LOCAL_KEY_PATH} -S ${SITE_KEY_PATH}"
+
+$PACKAGE_DIR/sbin/tripwire -m c $TW_LOCATIONS -P <%= p('tripwire.localpass') %>
+
+

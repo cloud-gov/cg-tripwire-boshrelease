@@ -12,7 +12,7 @@ templates:
   bin/cron_ctl: bin/cron_ctl
   bin/pre-start.erb: bin/pre-start
   bin/sleeper: bin/sleeper
-  config/cron-boshrelease-crontab.erb: config/cron-boshrelease-crontab
+  config/tripwire.erb: config/tripwire
   bin/monit_debugger: bin/monit_debugger
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
