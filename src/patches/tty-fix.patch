@@ -1,0 +1,13 @@
+--- install.sh.orig	2016-04-29 16:27:39.950653364 -0400
++++ install.sh	2016-04-29 16:28:10.918653531 -0400
+@@ -19,10 +19,6 @@
+
+ PATH='.:/bin:/usr/bin'
+ export PATH || (echo 'You must use sh to run this script'; kill $$)
+-if [ ! -t 0 ] ; then
+-	echo "Say 'sh install.sh', not 'sh < install.sh'"
+-	exit 1
+-fi
+
+ ##-------------------------------------------------------
+ ## The usage message.
