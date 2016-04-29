@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while [[ 1 == 1 ]]; do
+	sleep 3600
+done

@@ -1,0 +1,5 @@
+check process cron
+  with pidfile /var/vcap/sys/run/cron/cron.pid
+  start program "/var/vcap/jobs/cron/bin/monit_debugger cron_ctl '/var/vcap/jobs/cron/bin/cron_ctl start'"
+  stop program "/var/vcap/jobs/cron/bin/monit_debugger cron_ctl '/var/vcap/jobs/cron/bin/cron_ctl stop'"
+  group vcap

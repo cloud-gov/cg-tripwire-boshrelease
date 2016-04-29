@@ -1,0 +1,21 @@
+# abort script on any command that exits with a non zero value
+exec 2>&1
+set -e
+set -u
+set -x
+
+tar xvfz tripwire-open-source-2.4.3.1.tar.gz
+cd tripwire-open-source-2.4.3.1/
+
+# Fix configuration to be non-interactive and rebuild each time
+sed -i 's/^TWSYSLOG=false/TWSYSLOG=true/g' install/install.cfg
+sed -i 's/^CLOBBER=false/CLOBBER=true/g' install/install.cfg
+sed -i 's/^PROMPT="true"/PROMPT="false"/g' install/install.sh
+
+export TW_SITE_PASS=`openssl rand -base64 32`
+export TW_LOCAL_PASS=`openssl rand -base64 32`
+
+./configure --prefix=${BOSH_INSTALL_TARGET}
+make
+make install
+
