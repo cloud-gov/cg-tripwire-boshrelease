@@ -12,8 +12,13 @@ sed -i 's/^TWSYSLOG=false/TWSYSLOG=true/g' install/install.cfg
 sed -i 's/^CLOBBER=false/CLOBBER=true/g' install/install.cfg
 sed -i 's/^PROMPT="true"/PROMPT="false"/g' install/install.sh
 
-export TW_SITE_PASS=`openssl rand -base64 32`
-export TW_LOCAL_PASS=`openssl rand -base64 32`
+openssl rand -base64 "$((40 * 2))" | perl -pe 's/[^a-zA-Z0-9]//g' - | cut -c1-$LENGTH
+
+
+export TW_SITE_PASS=`openssl rand -base64 "$((40 * 2))" | tr '\n' ' ' | sed 's/[^a-zA-Z0-9]//g'` 
+export TW_LOCAL_PASS=`openssl rand -base64 "$((40 * 2))" | tr '\n' ' ' | sed 's/[^a-zA-Z0-9]//g'` 
+sed -i "s/^TW_SITE_PASS=\"\"/TW_SITE_PASS=\"${TW_SITE_PASS}\"/g" install/install.sh
+sed -i "s/^TW_LOCAL_PASS=\"\"/TW_LOCAL_PASS=\"${TW_LOCAL_PASS}\"/g" install/install.sh
 
 ./configure --prefix=${BOSH_INSTALL_TARGET}
 make
