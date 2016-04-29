@@ -1,5 +1,5 @@
 check process tripwire
-  with pidfile /var/vcap/sys/run/cron/cron.pid
+  with pidfile /var/vcap/sys/run/tripwire/tripwire.pid
   start program "/var/vcap/jobs/tripwire/bin/monit_debugger cron_ctl '/var/vcap/jobs/tripwire/bin/cron_ctl start'"
   stop program "/var/vcap/jobs/tripwire/bin/monit_debugger cron_ctl '/var/vcap/jobs/tripwire/bin/cron_ctl stop'"
   group vcap
