@@ -1,0 +1,16 @@
+---
+packages:
+- name: tripwire
+  version: db3664d135f0806676d63134426a34c677984ca8
+  fingerprint: db3664d135f0806676d63134426a34c677984ca8
+  sha1: 5a9304c0c43e4b372ce8461ba0cb833eeb464307
+  dependencies: []
+jobs:
+- name: tripwire
+  version: 6e3d9ca8f3680386d23c89cec38d9a2942eb13f0
+  fingerprint: 6e3d9ca8f3680386d23c89cec38d9a2942eb13f0
+  sha1: 2002f409f39ded53b7d11ea1a9590a7c5fdefaba
+commit_hash: 92a444bd
+uncommitted_changes: true
+name: tripwire
+version: '5'
