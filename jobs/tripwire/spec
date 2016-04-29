@@ -10,6 +10,7 @@ packages:
 
 templates:
   bin/cron_ctl: bin/cron_ctl
+  bin/run-report.sh.erb: bin/run-report.sh
   bin/pre-start.erb: bin/pre-start
   bin/sleeper: bin/sleeper
   config/tripwire.erb: config/tripwire
