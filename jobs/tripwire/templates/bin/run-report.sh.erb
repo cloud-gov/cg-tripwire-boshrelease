@@ -7,6 +7,6 @@ LOCAL_KEY_PATH=${KEY_DIR}/local.key
 SITE_KEY_PATH=${KEY_DIR}/site.key
 TW_LOCATIONS="-L ${LOCAL_KEY_PATH} -S ${SITE_KEY_PATH}"
 
-$PACKAGE_DIR/sbin/tripwire -m c $TW_LOCATIONS -P <%= p('tripwire.localpass') %>
+$PACKAGE_DIR/sbin/tripwire -m c $TW_LOCATIONS -P <%= p('tripwire.localpass') %> | logger -t tripwire.report
 
 
