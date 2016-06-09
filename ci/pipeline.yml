@@ -39,6 +39,7 @@ resources:
   source:
     bucket: {{s3-bosh-releases-bucket}}
     regexp: tripwire-(.*).tgz
+    region_name: {{s3-bosh-releases-region}}
     access_key_id: {{s3-bosh-releases-access-key-id}}
     secret_access_key: {{s3-bosh-releases-secret-access-key}}
 - name: final-builds-dir-tarball
@@ -46,6 +47,7 @@ resources:
   source:
     bucket: {{s3-bosh-releases-bucket}}
     versioned_file: final-builds-dir-tripwire.tgz
+    region_name: {{s3-bosh-releases-region}}
     access_key_id: {{s3-bosh-releases-access-key-id}}
     secret_access_key: {{s3-bosh-releases-secret-access-key}}
 - name: releases-dir-tarball
@@ -53,5 +55,6 @@ resources:
   source:
     bucket: {{s3-bosh-releases-bucket}}
     versioned_file: releases-dir-tripwire.tgz
+    region_name: {{s3-bosh-releases-region}}
     access_key_id: {{s3-bosh-releases-access-key-id}}
     secret_access_key: {{s3-bosh-releases-secret-access-key}}
