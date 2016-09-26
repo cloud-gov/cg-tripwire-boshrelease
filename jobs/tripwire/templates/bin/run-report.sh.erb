@@ -1,4 +1,5 @@
 #!/bin/bash
+
 JOB_NAME=tripwire
 JOB_DIR=/var/vcap/jobs/$JOB_NAME
 PACKAGE_DIR=/var/vcap/packages/tripwire
@@ -7,6 +8,13 @@ LOCAL_KEY_PATH=${KEY_DIR}/local.key
 SITE_KEY_PATH=${KEY_DIR}/site.key
 TW_LOCATIONS="-L ${LOCAL_KEY_PATH} -S ${SITE_KEY_PATH}"
 
+if [[ ! -f $LOCAL_KEY_PATH || ! -f $SITE_KEY_PATH ]]; then
+  mkdir -p $KEY_DIR
+  $PACKAGE_DIR/sbin/twadmin -m G ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> -Q <%= p('tripwire.sitepass') %>
+
+  $PACKAGE_DIR/sbin/twadmin --create-cfgfile -S ${SITE_KEY_PATH} -Q <%= p('tripwire.sitepass') %> $JOB_DIR/config/twcfg.txt
+  $PACKAGE_DIR/sbin/twadmin --create-polfile -S ${SITE_KEY_PATH} -Q <%= p('tripwire.sitepass') %> $JOB_DIR/config/twpol.txt
+  $PACKAGE_DIR/sbin/tripwire -m i ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %>
+fi
+
 $PACKAGE_DIR/sbin/tripwire -m c $TW_LOCATIONS -P <%= p('tripwire.localpass') %> | logger -t tripwire.report
-
-
