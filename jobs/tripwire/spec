@@ -11,6 +11,7 @@ packages:
 templates:
   bin/cron_ctl: bin/cron_ctl
   bin/run-report.sh.erb: bin/run-report.sh
+  bin/aggregate-report.py: bin/aggregate-report.py
   bin/sleeper: bin/sleeper
   config/tripwire.erb: config/tripwire
   config/twcfg.txt.erb: config/twcfg.txt
@@ -23,7 +24,5 @@ templates:
 properties:
   tripwire.localpass:
     description: Local passphrase
-    default: "soverysecret"
   tripwire.sitepass:
     description: Site passphrase
-    default: "soverysecret"
