@@ -36,7 +36,7 @@ def format_summary(summary, output):
         for section, counts in summary.items():
             for action, value in counts.items():
                 fp.write('tripwire_violation_count {{section="{section}" action="{action}"}} {value}\n'.format(
-                    section=label.sub('_', section.split('(')[0].lower()),
+                    section=label.sub('_', section.split('(')[0].strip().lower()),
                     action=action,
                     value=value,
                 ))
