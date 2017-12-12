@@ -17,4 +17,9 @@ if [[ ! -f $LOCAL_KEY_PATH || ! -f $SITE_KEY_PATH ]]; then
   $PACKAGE_DIR/sbin/tripwire -m i ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %>
 fi
 
-$PACKAGE_DIR/sbin/tripwire -m c $TW_LOCATIONS -P <%= p('tripwire.localpass') %> | logger -t tripwire.report
+$PACKAGE_DIR/sbin/tripwire -m c $TW_LOCATIONS -P <%= p('tripwire.localpass') %> > report.txt
+logger -t tripwire.report -f report.txt
+
+/var/vcap/jobs/tripwire/bin/aggregate-report.py report.txt /var/vcap/jobs/node_exporter/config/tripwire.prom
+
+rm report.txt
