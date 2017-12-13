@@ -35,7 +35,7 @@ def format_summary(summary, output):
     with tempfile.NamedTemporaryFile(delete=False) as fp:
         for section, counts in summary.items():
             for action, value in counts.items():
-                fp.write('tripwire_violation_count {{section="{section}" action="{action}"}} {value}\n'.format(
+                fp.write('tripwire_violation_count {{section="{section}",action="{action}"}} {value}\n'.format(
                     section=label.sub('_', section.split('(')[0].strip().lower()),
                     action=action,
                     value=value,
