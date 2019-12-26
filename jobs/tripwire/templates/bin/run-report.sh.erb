@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 JOB_NAME=tripwire
 JOB_DIR=/var/vcap/jobs/$JOB_NAME
 PACKAGE_DIR=/var/vcap/packages/tripwire
@@ -23,3 +25,5 @@ logger -t tripwire.report -f report.txt
 /var/vcap/jobs/tripwire/bin/aggregate-report.py report.txt /var/vcap/jobs/node_exporter/config/tripwire.prom
 
 rm report.txt
+
+touch /var/vcap/data/tripwire/report-ran

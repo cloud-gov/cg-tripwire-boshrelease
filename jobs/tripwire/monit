@@ -3,3 +3,7 @@ check process tripwire
   start program "/var/vcap/jobs/tripwire/bin/monit_debugger cron_ctl '/var/vcap/jobs/tripwire/bin/cron_ctl start'"
   stop program "/var/vcap/jobs/tripwire/bin/monit_debugger cron_ctl '/var/vcap/jobs/tripwire/bin/cron_ctl stop'"
   group vcap
+
+check file report-ran with path /var/vcap/data/report-ran
+  if timestamp > 2 hours then alert
+  depends on tripwire
