@@ -1,4 +1,4 @@
-#!/var/vcap/packages/python3
+#!/var/vcap/packages/python3/bin/python3
 # -*- coding: utf-8 -*-
 
 import re
