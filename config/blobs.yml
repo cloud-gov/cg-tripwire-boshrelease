@@ -1,5 +1,8 @@
----
+Python-3.7.5.tgz:
+  size: 23126230
+  object_id: 44d9137c-c5e6-4705-5849-d2c6d62d416d
+  sha: sha256:8ecc681ea0600bbfb366f2b173f727b205bb825d93d2f0b286bc4e58d37693da
 tripwire-open-source-2.4.3.1.tar.gz:
+  size: 932665
   object_id: 3f5dd4e6-d3ce-41fb-8533-be8b42241aa0
   sha: 8f04e9154aa56096cacaa4ce77bfba22d44a9a9d
-  size: 932665
