@@ -1,6 +1,7 @@
 ---
 name: tripwire
 dependencies:
+- python3
 files:
 - tripwire-open-source-2.4.3.1.tar.gz
 - patches/tty-fix.patch
