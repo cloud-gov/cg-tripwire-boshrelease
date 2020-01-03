@@ -14,6 +14,7 @@ templates:
   bin/run-report.sh.erb: bin/run-report.sh
   bin/aggregate-report.py: bin/aggregate-report.py
   bin/sleeper: bin/sleeper
+  bin/post-deploy: bin/post-deploy
   config/tripwire.erb: config/tripwire
   config/twcfg.txt.erb: config/twcfg.txt
   config/twpol.txt.erb: config/twpol.txt
