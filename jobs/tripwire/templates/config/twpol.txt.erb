@@ -321,6 +321,7 @@ Temporary     = +pugt ;
   /etc/cron.weekly                -> $(Growing);
   /etc/cron.monthly               -> $(Growing);
   /var/spool/mail                 -> $(Growing);
+  /var/vcap/sys/log               -> $(Growing) -i;
 }
 
   ################################################
@@ -352,4 +353,22 @@ Temporary     = +pugt ;
 )
 {
    !/proc ;                           # Ignore most of this directory
+}
+
+  ################################################
+ #                                              ##
+################################################ #
+#                                              # #
+#   Nessus Files                               # #
+#                                              ##
+################################################
+
+(
+  rulename = "Nessus Agent",
+)
+{
+  /opt/nessus_agent/var/nessus/backups/      -> $(Dynamic);
+  /opt/nessus_agent/var/nessus/global.db-wal -> $(Dynamic);
+  /opt/nessus_agent/var/nessus/global.db-wal -> $(Dynamic);
+  !/opt/nessus_agent/var/nessus/nessus.pid;
 }
