@@ -1,3 +1,4 @@
+#!/bin/bash
 
 JOB_NAME=tripwire
 JOB_DIR=/var/vcap/jobs/$JOB_NAME
