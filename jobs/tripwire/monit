@@ -7,3 +7,4 @@ check process tripwire
 check file report-ran with path /var/vcap/data/report-ran
   if timestamp > 2 hours then alert
   depends on tripwire
+  group vcap
