@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# this prevents the job from failing on startup
+touch /var/vcap/data/tripwire/report-ran
