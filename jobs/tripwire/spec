@@ -15,6 +15,7 @@ templates:
   bin/aggregate-report.py: bin/aggregate-report.py
   bin/sleeper: bin/sleeper
   bin/post-deploy: bin/post-deploy
+  bin/pre-start: bin/pre-start
   config/tripwire.erb: config/tripwire
   config/twcfg.txt.erb: config/twcfg.txt
   config/twpol.txt.erb: config/twpol.txt
