@@ -273,6 +273,7 @@ Temporary     = +pugt ;
   #/root/.ICEauthority           -> $(Dynamic) ;
   #/root/.Xauthority             -> $(Dynamic) -i ;
   #/root/.Xresources             -> $(Dynamic) ;
+  /root/.monit.state             -> $(Dynamic) -i;
 }
 
   ################################################
@@ -308,7 +309,10 @@ Temporary     = +pugt ;
 {
   /.autofsck                    -> $(Dynamic) -m ;
   /var/cache/man/whatis         -> $(Growing) ;
-  /var/lib/logrotate.status     -> $(Growing) ;
+  /var/cache                    -> $(Dynamic);
+  /var/backups                  -> $(Dynamic);
+  /var/lib/chrony/chrony.drify  -> $(Dynamic) -i;
+  /var/lib/logrotate/status     -> $(Dynamic) -i;
   #/var/lib/nfs/statd            -> $(Growing) ;
   !/var/lib/random-seed ;
   #/var/lib/slocate/slocate.db    -> $(Growing) -is ;
@@ -321,7 +325,11 @@ Temporary     = +pugt ;
   /etc/cron.weekly                -> $(Growing);
   /etc/cron.monthly               -> $(Growing);
   /var/spool/mail                 -> $(Growing);
-  /var/vcap/sys/log               -> $(Growing) -i;
+  /var/vcap/sys/log               -> $(Dynamic) -i;
+  /var/vcap/monit                 -> $(Dynamic) -i;
+  /var/vcap/instance              -> $(Dynamic) -i;
+  /var/vcap/bosh                  -> $(Dynamic) -i;
+  /var/vcap/bosh/bin              -> $(ReadOnly);
 }
 
   ################################################
@@ -367,8 +375,8 @@ Temporary     = +pugt ;
   rulename = "Nessus Agent",
 )
 {
-  /opt/nessus_agent/var/nessus/backups/      -> $(Dynamic);
-  /opt/nessus_agent/var/nessus/global.db-wal -> $(Dynamic);
-  /opt/nessus_agent/var/nessus/global.db-shm -> $(Dynamic);
+  /opt/nessus_agent/var/nessus/backups/      -> $(Dynamic) -i;
+  /opt/nessus_agent/var/nessus/global.db-wal -> $(Dynamic) -i;
+  /opt/nessus_agent/var/nessus/global.db-shm -> $(Dynamic) -i;
   !/opt/nessus_agent/var/nessus/nessus.pid;
 }
