@@ -19,4 +19,4 @@ $PACKAGE_DIR/sbin/twadmin --create-polfile -S ${SITE_KEY_PATH} -Q <%= p('tripwir
 # update the database
 $PACKAGE_DIR/sbin/tripwire -m i ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> >> ${LOG_FILE} 2>&1
 # update the policy
-$PACKAGE_DIR/sbin/tripwire -m p ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> -Q <%= p('tripwire.sitepass') ${JOB_DIR}/config/twpol.txt>> ${LOG_FILE} 2>&1
+$PACKAGE_DIR/sbin/tripwire -m p ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> -Q <%= p('tripwire.sitepass') %> ${JOB_DIR}/config/twpol.txt >> ${LOG_FILE} 2>&1
