@@ -152,6 +152,21 @@ Temporary     = +pugt ;
   /etc/rc.d                      -> $(IgnoreNone) -SHa ;
   /etc/sysconfig                 -> $(IgnoreNone) -SHa ;
   /etc/sysconfig/hwconf          -> $(Dynamic) -m ;
+  # scary, but bosh really messes with these...
+  /etc/group                     -> $(Dynamic) -i;
+  /etc/group-                    -> $(Dynamic) -i;
+  /etc/gshadow                   -> $(Dynamic) -i;
+  /etc/gshadow-                  -> $(Dynamic) -i;
+  /etc/hosts                     -> $(Dynamic) -i;
+  /etc/passwd                    -> $(Dynamic) -i;
+  /etc/passwd-                   -> $(Dynamic) -i;
+  /etc/shadow                    -> $(Dynamic) -i;
+  /etc/shadow-                   -> $(Dynamic) -i;
+  /etc/subgid                    -> $(Dynamic) -i;
+  /etc/subgid-                   -> $(Dynamic) -i;
+  /etc/subuid                    -> $(Dynamic) -i;
+  /etc/subuid-                   -> $(Dynamic) -i;
+
 }
 
   ################################################
@@ -250,7 +265,7 @@ Temporary     = +pugt ;
   rulename = "Root Directory and Files",
 )
 {
-  /root                         -> $(IgnoreNone) -SHa ;
+  /root                         -> $(IgnoreNone) -SHam ;
   /root/.bashrc                 -> $(Dynamic) ;
   /root/.bash_history           -> $(Dynamic) ;
   #/root/.bash_logout            -> $(Dynamic) ;
@@ -315,6 +330,7 @@ Temporary     = +pugt ;
   /var/lib/logrotate/status     -> $(Dynamic) -i;
   #/var/lib/nfs/statd            -> $(Growing) ;
   !/var/lib/random-seed ;
+  /var/lib/systemd/timers/      -> $(Dynamic) -i;
   #/var/lib/slocate/slocate.db    -> $(Growing) -is ;
   /var/lock/subsys                -> $(Dynamic) -i ;
   /var/log                        -> $(Growing) -i ;
@@ -330,6 +346,7 @@ Temporary     = +pugt ;
   /var/vcap/instance              -> $(Dynamic) -i;
   /var/vcap/bosh                  -> $(Dynamic) -i;
   /var/vcap/bosh/bin              -> $(ReadOnly);
+  /var/vcap/bosh_ssh              -> $(Dynamic) -i;
 }
 
   ################################################
