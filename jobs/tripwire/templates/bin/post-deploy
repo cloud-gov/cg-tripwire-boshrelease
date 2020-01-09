@@ -23,4 +23,4 @@ update_result=$($PACKAGE_DIR/sbin/tripwire -m p ${TW_LOCATIONS} -P <%= p('tripwi
 
 # tripwire return codes are mysterious. This checks the last line of output to try to see if it's good. 
 last_line=$(echo $update_result | tail -n 1)
-[[ ${last_line} =~ (Wrote database file: | policy and database filese were not altered) ]]
+[[ ${last_line} =~ (Wrote database file: | policy and database files were not altered) ]]
