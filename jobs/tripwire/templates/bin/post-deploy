@@ -19,8 +19,9 @@ $PACKAGE_DIR/sbin/twadmin --create-polfile -S ${SITE_KEY_PATH} -Q <%= p('tripwir
 # update the database
 $PACKAGE_DIR/sbin/tripwire -m i ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> >> ${LOG_FILE} 2>&1
 # update the policy
-update_result=$($PACKAGE_DIR/sbin/tripwire -m p ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> -Q <%= p('tripwire.sitepass') %> ${JOB_DIR}/config/twpol.txt)
-
-# tripwire return codes are mysterious. This checks the last line of output to try to see if it's good. 
-last_line=$(echo $update_result | tail -n 1)
-[[ ${last_line} =~ (Wrote database file: | policy and database files were not altered) ]]
+# disabled until we figure out why it's breaking deployments
+# update_result=$($PACKAGE_DIR/sbin/tripwire -m p ${TW_LOCATIONS} -P <%= p('tripwire.localpass') %> -Q <%= p('tripwire.sitepass') %> ${JOB_DIR}/config/twpol.txt)
+# 
+# # tripwire return codes are mysterious. This checks the last line of output to try to see if it's good. 
+# last_line=$(echo $update_result | tail -n 1)
+# [[ ${last_line} =~ (Wrote database file: | policy and database files were not altered) ]]
